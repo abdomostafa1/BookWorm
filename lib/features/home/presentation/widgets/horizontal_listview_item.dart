@@ -5,8 +5,8 @@ class HorizontalListviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.30,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: AspectRatio(
         aspectRatio: 2 / 3,
         child: Container(
