@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class HorizontalListviewItem extends StatelessWidget {
-  const HorizontalListviewItem({super.key});
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage({super.key});
 
   @override
   Widget build(BuildContext context) {

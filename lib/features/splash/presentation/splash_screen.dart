@@ -1,6 +1,7 @@
+import 'package:book_worm/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../home/presentation/home_screen.dart';
 
@@ -17,8 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 3),(){
-      Navigator.pop(context);
-      Get.to(() => HomeScreen());
+      GoRouter.of(context).push(AppRouter.homeScreen);
     });
   }
 

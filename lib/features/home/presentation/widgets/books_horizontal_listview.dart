@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'horizontal_listview_item.dart';
+import 'custom_book_image.dart';
 
 class BooksHorizontalListview extends StatelessWidget {
   const BooksHorizontalListview({super.key});
@@ -13,7 +13,7 @@ class BooksHorizontalListview extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: 10,
           itemBuilder: (context, index) {
-            return HorizontalListviewItem();
+            return CustomBookImage();
           }),
     );
   }
