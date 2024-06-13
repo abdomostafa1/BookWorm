@@ -1,3 +1,4 @@
+import 'package:book_worm/features/home/presentation/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 
 class BestsellerListviewItem extends StatelessWidget {
@@ -16,15 +17,13 @@ class BestsellerListviewItem extends StatelessWidget {
         ),
       ),
       const SizedBox(width: 24),
-      Column(
-          crossAxisAlignment:CrossAxisAlignment.start,
-          children: [
+      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width*.50,
+          width: MediaQuery.of(context).size.width * .50,
           child: const Text(
             'Harry Potter and the Goblet of Fire',
             maxLines: 2,
-            overflow:TextOverflow.ellipsis,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
@@ -39,35 +38,20 @@ class BestsellerListviewItem extends StatelessWidget {
               fontFamily: 'GT Sectra Fine',
               color: Colors.grey),
         ),
-        const Row(children: [
-          Text(
-            '19.99 \$',
-            style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'GT Sectra Fine'),
-          ),
-          SizedBox(width: 16,),
-          Icon(
-            Icons.star,
-            color: Colors.yellowAccent,
-          ),
-          Text(
-            '4.8',
-            style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'GT Sectra Fine'),
-          ),
-          Text(
-            '(2390)',
-            style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'GT Sectra Fine',
-                color: Colors.grey),
-          ),
-        ])
+        const Row(
+          mainAxisAlignment:MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              '19.99 \$',
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'GT Sectra Fine'),
+            ),
+            SizedBox(width: 16,),
+            BookRating()
+          ],
+        )
       ])
     ]);
   }
