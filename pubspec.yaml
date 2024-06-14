@@ -12,6 +12,7 @@ dependencies:
   go_router: ^14.1.4
   flutter_svg: ^2.0.5
   google_fonts: ^6.2.1
+  dio: ^5.4.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -20,15 +21,7 @@ flutter:
   uses-material-design: true
   assets:
   - assets/images/
-
   fonts:
-     - family: GT Sectra Fine
-       fonts:
-         - asset: assets/fonts/GT-Sectra-Fine-Regular.ttf
-
-
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
-
-
-
+  - family: GT Sectra Fine
+    fonts:
+    - asset: assets/fonts/GT-Sectra-Fine-Regular.ttf
