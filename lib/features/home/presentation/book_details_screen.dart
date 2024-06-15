@@ -4,8 +4,22 @@ import 'package:book_worm/features/home/presentation/widgets/custom_book_image.d
 import 'package:book_worm/features/home/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-class BookDetailsScreen extends StatelessWidget {
+import '../data/services/home_service.dart';
+
+class BookDetailsScreen extends StatefulWidget {
   const BookDetailsScreen({super.key});
+
+  @override
+  State<BookDetailsScreen> createState() => _BookDetailsScreenState();
+}
+
+class _BookDetailsScreenState extends State<BookDetailsScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    HomeService().fetchNewestBooks();
+  }
 
   @override
   Widget build(BuildContext context) {

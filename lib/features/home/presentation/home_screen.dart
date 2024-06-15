@@ -1,12 +1,20 @@
 import 'package:book_worm/app_router.dart';
+import 'package:book_worm/features/home/data/services/home_service.dart';
 import 'package:book_worm/features/home/presentation/widgets/bestseller_listview.dart';
 import 'package:book_worm/features/home/presentation/widgets/bestseller_listview_item.dart';
 import 'package:book_worm/features/home/presentation/widgets/books_horizontal_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
 
   @override
   Widget build(BuildContext context) {
