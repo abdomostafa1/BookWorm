@@ -18,7 +18,6 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
   @override
   void initState() {
     super.initState();
-    HomeService().fetchNewestBooks();
   }
 
   @override

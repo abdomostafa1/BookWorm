@@ -4,13 +4,14 @@ import 'package:book_worm/utiils/failures.dart';
 import 'package:dio/dio.dart';
 
 class HomeService {
-  final apiService = ApiService(Dio());
+  final ApiService apiService;
+
+  HomeService(this.apiService);
 
   Future<List<BookModel>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-          endPoint:
-          '/?q=subject:programming&flowers&filter=free-ebooks');
+          endPoint: '/?q=subject:programming&flowers&filter=free-ebooks');
       final List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
@@ -24,7 +25,7 @@ class HomeService {
       throw failure;
     } catch (e) {
       print(e.toString());
-      throw Failure(null,e.toString());
+      throw Failure(null, e.toString());
     }
   }
 
@@ -46,7 +47,7 @@ class HomeService {
       throw failure;
     } catch (e) {
       print(e.toString());
-      throw Failure(null,e.toString());
+      throw Failure(null, e.toString());
     }
   }
 }
