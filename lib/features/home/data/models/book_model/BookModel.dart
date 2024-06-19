@@ -18,7 +18,7 @@ class BookModel {
     String? id,
     String? etag,
     String? selfLink,
-    VolumeInfo? volumeInfo,
+    required VolumeInfo volumeInfo,
     SaleInfo? saleInfo,
     AccessInfo? accessInfo,
     SearchInfo? searchInfo,
@@ -38,9 +38,7 @@ class BookModel {
     _id = json['id'];
     _etag = json['etag'];
     _selfLink = json['selfLink'];
-    _volumeInfo = json['volumeInfo'] != null
-        ? VolumeInfo.fromJson(json['volumeInfo'])
-        : null;
+    _volumeInfo = VolumeInfo.fromJson(json['volumeInfo']);
     _saleInfo =
         json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null;
     _accessInfo = json['accessInfo'] != null
@@ -55,7 +53,7 @@ class BookModel {
   String? _id;
   String? _etag;
   String? _selfLink;
-  VolumeInfo? _volumeInfo;
+  late VolumeInfo _volumeInfo;
   SaleInfo? _saleInfo;
   AccessInfo? _accessInfo;
   SearchInfo? _searchInfo;
@@ -89,7 +87,7 @@ class BookModel {
 
   String? get selfLink => _selfLink;
 
-  VolumeInfo? get volumeInfo => _volumeInfo;
+  VolumeInfo get volumeInfo => _volumeInfo;
 
   SaleInfo? get saleInfo => _saleInfo;
 

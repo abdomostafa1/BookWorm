@@ -11,7 +11,7 @@ class HomeService {
   Future<List<BookModel>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: '/?q=subject:programming&flowers&filter=free-ebooks');
+          endPoint: '?q=drama&filter=free-ebooks');
       final List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));

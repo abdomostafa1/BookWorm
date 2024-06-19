@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({super.key});
+  const CustomBookImage({super.key,required this.imageUrl});
 
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -10,10 +11,10 @@ class CustomBookImage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 2 / 3,
         child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(16)),
+            decoration:  BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
                 image: DecorationImage(
-          image: AssetImage('assets/images/book.jpg'),
+          image: NetworkImage(imageUrl),
         ))),
       ),
     );

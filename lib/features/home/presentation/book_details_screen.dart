@@ -15,6 +15,8 @@ class BookDetailsScreen extends StatefulWidget {
 
 class _BookDetailsScreenState extends State<BookDetailsScreen> {
 
+  final imageUrl="http://books.google.com/books/content?id=YvNDAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api";
+
   @override
   void initState() {
     super.initState();
@@ -52,7 +54,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                 ),
                 SizedBox(
                     width: MediaQuery.of(context).size.width * .45,
-                    child: const CustomBookImage()),
+                    child:  CustomBookImage(imageUrl:imageUrl)),
                 SizedBox(height: MediaQuery.of(context).size.height * .08),
                 const Text(
                   'The Jungle Book',
@@ -110,7 +112,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      CustomBookImage();
+                      CustomBookImage(imageUrl: imageUrl);
                     },
                   ),
                 )

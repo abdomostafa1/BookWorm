@@ -8,7 +8,10 @@ import '../../../data/services/home_service.dart';
 part 'featured_books_state.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
-  FeaturedBooksCubit(this.homeService) : super(FeaturedBooksLoading());
+  FeaturedBooksCubit(this.homeService) : super(FeaturedBooksLoading()){
+    fetchFeaturedBooks();
+  }
+
   final HomeService homeService;
 
   fetchFeaturedBooks() async {

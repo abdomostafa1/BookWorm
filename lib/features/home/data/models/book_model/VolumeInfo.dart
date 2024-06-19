@@ -37,7 +37,7 @@ class VolumeInfo {
       bool? allowAnonLogging, 
       String? contentVersion, 
       PanelizationSummary? panelizationSummary, 
-      ImageLinks? imageLinks, 
+      required ImageLinks imageLinks,
       String? language, 
       String? previewLink, 
       String? infoLink, 
@@ -81,7 +81,7 @@ class VolumeInfo {
     _allowAnonLogging = json['allowAnonLogging'];
     _contentVersion = json['contentVersion'];
     _panelizationSummary = json['panelizationSummary'] != null ? PanelizationSummary.fromJson(json['panelizationSummary']) : null;
-    _imageLinks = json['imageLinks'] != null ? ImageLinks.fromJson(json['imageLinks']) : null;
+    _imageLinks = ImageLinks.fromJson(json['imageLinks']);
     _language = json['language'];
     _previewLink = json['previewLink'];
     _infoLink = json['infoLink'];
@@ -100,7 +100,7 @@ class VolumeInfo {
   bool? _allowAnonLogging;
   String? _contentVersion;
   PanelizationSummary? _panelizationSummary;
-  ImageLinks? _imageLinks;
+  late ImageLinks _imageLinks;
   String? _language;
   String? _previewLink;
   String? _infoLink;
@@ -155,7 +155,7 @@ VolumeInfo copyWith({  String? title,
   bool? get allowAnonLogging => _allowAnonLogging;
   String? get contentVersion => _contentVersion;
   PanelizationSummary? get panelizationSummary => _panelizationSummary;
-  ImageLinks? get imageLinks => _imageLinks;
+  ImageLinks get imageLinks => _imageLinks;
   String? get language => _language;
   String? get previewLink => _previewLink;
   String? get infoLink => _infoLink;
