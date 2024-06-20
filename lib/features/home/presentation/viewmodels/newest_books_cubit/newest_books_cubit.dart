@@ -8,11 +8,13 @@ import '../../../data/services/home_service.dart';
 part 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
-  NewestBooksCubit(this.homeService) : super(NewestBooksLoading());
+  NewestBooksCubit(this.homeService) : super(NewestBooksLoading()){
+    fetchNewestBooks();
+  }
 
   final HomeService homeService;
 
-  fetchFeaturedBooks() async {
+  fetchNewestBooks() async {
     emit(NewestBooksLoading());
     try {
       final books = await homeService.fetchNewestBooks();

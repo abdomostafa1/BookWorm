@@ -5,6 +5,8 @@ import 'package:book_worm/features/splash/presentation/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
+import 'features/home/data/models/book_model/BookModel.dart';
+
 class AppRouter {
   static String homeScreen = '/homeScreen';
   static String bookDetailsScreen = '/bookDetailsScreen';
@@ -26,7 +28,7 @@ class AppRouter {
       GoRoute(
         path: bookDetailsScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return const BookDetailsScreen();
+          return  BookDetailsScreen(bookModel:state.extra as BookModel);
         },
       ),
       GoRoute(

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
+  const BookRating({super.key, required this.ratingAverage, required this.ratingsCount});
 
+  final int ratingAverage;
+  final int ratingsCount;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
+        const Icon(
           Icons.star,
           color: Colors.yellowAccent,
         ),
         Text(
-          '4.8',
+          ratingAverage.toString(),
           style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
@@ -21,7 +23,7 @@ class BookRating extends StatelessWidget {
         ),
         SizedBox(width:6),
         Text(
-          '(2390)',
+          '($ratingsCount)',
           style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,

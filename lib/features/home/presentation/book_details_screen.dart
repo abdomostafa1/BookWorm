@@ -1,4 +1,5 @@
 import 'package:book_worm/constants.dart';
+import 'package:book_worm/features/home/data/models/book_model/BookModel.dart';
 import 'package:book_worm/features/home/presentation/widgets/book_rating.dart';
 import 'package:book_worm/features/home/presentation/widgets/custom_book_image.dart';
 import 'package:book_worm/features/home/presentation/widgets/custom_button.dart';
@@ -7,15 +8,17 @@ import 'package:flutter/material.dart';
 import '../data/services/home_service.dart';
 
 class BookDetailsScreen extends StatefulWidget {
-  const BookDetailsScreen({super.key});
+  const BookDetailsScreen({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   State<BookDetailsScreen> createState() => _BookDetailsScreenState();
 }
 
 class _BookDetailsScreenState extends State<BookDetailsScreen> {
-
-  final imageUrl="http://books.google.com/books/content?id=YvNDAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api";
+  final imageUrl =
+      "http://books.google.com/books/content?id=YvNDAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api";
 
   @override
   void initState() {
@@ -54,7 +57,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                 ),
                 SizedBox(
                     width: MediaQuery.of(context).size.width * .45,
-                    child:  CustomBookImage(imageUrl:imageUrl)),
+                    child: CustomBookImage(imageUrl: imageUrl)),
                 SizedBox(height: MediaQuery.of(context).size.height * .08),
                 const Text(
                   'The Jungle Book',
@@ -68,7 +71,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                           TextStyle(fontSize: 20, fontFamily: 'GT Sectra Fine'),
                     )),
                 const SizedBox(height: 24),
-                const BookRating(),
+                const BookRating(ratingAverage: 0, ratingsCount: 0),
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -102,12 +105,12 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                 ),
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child:  Text('You can also like',
+                  child: Text('You can also like',
                       style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 8),
                 SizedBox(
-                height: MediaQuery.of(context).size.height*0.15,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,

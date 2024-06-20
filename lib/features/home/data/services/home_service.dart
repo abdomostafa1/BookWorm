@@ -10,18 +10,44 @@ class HomeService {
 
   Future<List<BookModel>> fetchFeaturedBooks() async {
     try {
-      var data = await apiService.get(
-          endPoint: '?q=drama&filter=free-ebooks');
+      var data =
+          await apiService.get(endPoint: '?q=cartoon&filter=free-ebooks');
       final List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+        try {
+          books.add(BookModel.fromJson(item));
+        }
+        catch(e){
+          books.add(BookModel.fromJson(item));
+        }
+      }
+      return books;
+    } on DioException catch (e) {
+      final failure = Failure.fromDioException(e);
+      throw failure;
+    } catch (e) {
+      print(e.toString());
+      throw Failure(null, e.toString());
+    } 
+  }
+
+  Future<List<BookModel>> fetchNewestBooks() async {
+    try {
+      var data = await apiService.get(
+          endPoint: '?q=love&filter=free-ebooks&Sorting=newest');
+      final List<BookModel> books = [];
+      for (var item in data['items']) {
+        try {
+          books.add(BookModel.fromJson(item));
+        }
+        catch(e){
+          books.add(BookModel.fromJson(item));
+        }
       }
       return books;
     } on DioException catch (e) {
       final failure = Failure.fromDioException(e);
       print(failure);
-      print('statusCode=${failure.statusCode}');
-      print('errorMessage=${failure.errorMessage}');
       throw failure;
     } catch (e) {
       print(e.toString());
@@ -29,21 +55,22 @@ class HomeService {
     }
   }
 
-  Future<List<BookModel>> fetchNewestBooks() async {
+  Future<List<BookModel>> fetchSimilarBooks({required String category}) async {
     try {
-      var data = await apiService.get(
-          endPoint:
-              '/?q=subject:programming&flowers&filter=free-ebooks&sorting=newest');
+      var data =
+      await apiService.get(endPoint: '?q=$category&filter=free-ebooks&sorting=relevance');
       final List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+        try {
+          books.add(BookModel.fromJson(item));
+        }
+        catch(e){
+          books.add(BookModel.fromJson(item));
+        }
       }
       return books;
     } on DioException catch (e) {
       final failure = Failure.fromDioException(e);
-      print(failure);
-      print('statusCode=${failure.statusCode}');
-      print('errorMessage=${failure.errorMessage}');
       throw failure;
     } catch (e) {
       print(e.toString());

@@ -24,8 +24,8 @@ import 'ImageLinks.dart';
 
 class VolumeInfo {
   VolumeInfo({
-      String? title, 
-      String? subtitle, 
+      required String title,
+      String? subtitle,
       List<String>? authors, 
       String? publishedDate, 
       List<IndustryIdentifiers>? industryIdentifiers, 
@@ -37,7 +37,7 @@ class VolumeInfo {
       bool? allowAnonLogging, 
       String? contentVersion, 
       PanelizationSummary? panelizationSummary, 
-      required ImageLinks imageLinks,
+      ImageLinks? imageLinks,
       String? language, 
       String? previewLink, 
       String? infoLink, 
@@ -87,7 +87,7 @@ class VolumeInfo {
     _infoLink = json['infoLink'];
     _canonicalVolumeLink = json['canonicalVolumeLink'];
   }
-  String? _title;
+  late String _title;
   String? _subtitle;
   List<String>? _authors;
   String? _publishedDate;
@@ -100,7 +100,7 @@ class VolumeInfo {
   bool? _allowAnonLogging;
   String? _contentVersion;
   PanelizationSummary? _panelizationSummary;
-  late ImageLinks _imageLinks;
+  ImageLinks? _imageLinks;
   String? _language;
   String? _previewLink;
   String? _infoLink;
@@ -142,7 +142,7 @@ VolumeInfo copyWith({  String? title,
   infoLink: infoLink ?? _infoLink,
   canonicalVolumeLink: canonicalVolumeLink ?? _canonicalVolumeLink,
 );
-  String? get title => _title;
+  String get title => _title;
   String? get subtitle => _subtitle;
   List<String>? get authors => _authors;
   String? get publishedDate => _publishedDate;
@@ -155,7 +155,7 @@ VolumeInfo copyWith({  String? title,
   bool? get allowAnonLogging => _allowAnonLogging;
   String? get contentVersion => _contentVersion;
   PanelizationSummary? get panelizationSummary => _panelizationSummary;
-  ImageLinks get imageLinks => _imageLinks;
+  ImageLinks? get imageLinks => _imageLinks;
   String? get language => _language;
   String? get previewLink => _previewLink;
   String? get infoLink => _infoLink;
