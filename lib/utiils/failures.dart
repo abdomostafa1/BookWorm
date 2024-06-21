@@ -23,7 +23,7 @@ class Failure {
       case DioExceptionType.connectionError:
         return NoInternet();
       case DioExceptionType.unknown:
-        return Failure(e.response?.statusCode, 'unknown');
+        return Failure(e.response?.statusCode, 'unknown error');
     }
   }
 

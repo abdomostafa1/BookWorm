@@ -15,7 +15,7 @@ class NewestBookListviewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          context.go(AppRouter.bookDetailsScreen, extra: bookModel);
+          context.push(AppRouter.bookDetailsScreen, extra: bookModel);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,54 +24,51 @@ class NewestBookListviewItem extends StatelessWidget {
                 imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
                 borderRadius: 8),
             const SizedBox(width: 24),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .50,
-                  child: Text(
+            SizedBox(
+              width: MediaQuery.of(context).size.width * .50,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
                     bookModel.volumeInfo.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'GT Sectra Fine'),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .50,
-                  child: Text(
+                  Text(
                     bookModel.volumeInfo.authors![0],
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'GT Sectra Fine',
                         color: Colors.grey),
                   ),
-                ),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * .50,
-                    child: const Row(
-                      children: [
-                        Text(
-                          'Free',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'GT Sectra Fine'),
-                        ),
-                        Expanded(child: SizedBox(width: 16)),
-                        BookRating(
-                          ratingAverage: 0,
-                          ratingsCount: 0,
-                        )
-                      ],
-                    ))
-              ],
+                  Row(
+                    children: [
+                      const Text(
+                        'Free',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'GT Sectra Fine'),
+                      ),
+                      const Expanded(child: SizedBox(width: 16)),
+                      Text(
+                          'page count : ${bookModel.volumeInfo.pageCount ?? 'unknown'}',
+                          style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'GT Sectra Fine'))
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ));

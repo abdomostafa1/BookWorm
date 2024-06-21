@@ -20,13 +20,17 @@ class NewestBooksListview extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 16.0, left: 16.0),
                   child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.20,
-                      child: NewestBookListviewItem(bookModel: state.books[index])),
+                      child: NewestBookListviewItem(
+                          bookModel: state.books[index])),
                 );
               });
         } else if (state is NewestBooksFailure) {
-          return SliverFillRemaining(child: Center(child: Text(state.failure.errorMessage)));
+          return SliverFillRemaining(
+              child: Center(
+                  child: Text(state.failure.errorMessage, textAlign: TextAlign.center)));
         } else {
-          return const SliverFillRemaining(child: Center(child: CircularProgressIndicator()));
+          return const SliverFillRemaining(
+              child: Center(child: CircularProgressIndicator()));
         }
       },
     );

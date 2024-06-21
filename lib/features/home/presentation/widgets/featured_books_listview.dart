@@ -22,7 +22,7 @@ class FeaturedBooksListview extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    context.go(AppRouter.bookDetailsScreen,extra:state.books[index]);
+                    context.push(AppRouter.bookDetailsScreen,extra:state.books[index]);
                   },
                   child: CustomBookImage(
                       imageUrl:
@@ -32,7 +32,7 @@ class FeaturedBooksListview extends StatelessWidget {
             );
           } else if (state is FeaturedBooksFailure) {
             return Center(
-              child: Text(state.failure.errorMessage),
+              child: Text(state.failure.errorMessage,textAlign: TextAlign.center),
             );
           } else {
             return const Center(child: CircularProgressIndicator());
