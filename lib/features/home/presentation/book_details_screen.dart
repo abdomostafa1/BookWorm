@@ -1,5 +1,5 @@
 import 'package:book_worm/constants.dart';
-import 'package:book_worm/features/home/data/models/book_model/BookModel.dart';
+import 'package:book_worm/core/functions/show_snackbar.dart';
 import 'package:book_worm/features/home/presentation/viewmodels/similar_books_cubit/similar_books_cubit.dart';
 import 'package:book_worm/features/home/presentation/widgets/custom_book_image.dart';
 import 'package:book_worm/features/home/presentation/widgets/custom_button.dart';
@@ -7,8 +7,9 @@ import 'package:book_worm/features/home/presentation/widgets/similar_books_listv
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../data/services/home_service.dart';
+import '../../../core/models/book_model/BookModel.dart';
 
 class BookDetailsScreen extends StatefulWidget {
   const BookDetailsScreen({super.key, required this.bookModel});
@@ -114,7 +115,8 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                         ),
                         Expanded(
                           child: CustomButton(
-                            text: 'Preview',
+                            onPressed: onClickPreview,
+                            text: getPreviewBtnText(widget.bookModel),
                             backgroundColor: const Color(0xffE67966),
                             borderRadius: const BorderRadius.only(
                               topRight: Radius.circular(16),
@@ -142,5 +144,25 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
         ],
       ),
     ));
+  }
+
+  onClickPreview() async {
+    String? previewLink = widget.bookModel.volumeInfo.previewLink;
+    if (previewLink != null) {
+      final uri = Uri.parse(previewLink!);
+      if (await canLaunchUrl(uri)) {
+        launchUrl(uri);
+      } else {
+        showSnackBar(context, 'can\'t launch $previewLink');
+      }
+    }
+  }
+
+  String getPreviewBtnText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink != null) {
+      return 'Preview';
+    } else {
+      return 'Not Available';
+    }
   }
 }

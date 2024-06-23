@@ -1,7 +1,8 @@
-import 'package:book_worm/features/home/data/models/book_model/BookModel.dart';
-import 'package:book_worm/utiils/api_service.dart';
-import 'package:book_worm/utiils/failures.dart';
+import 'package:book_worm/core/api_service.dart';
+import 'package:book_worm/core/failures.dart';
 import 'package:dio/dio.dart';
+
+import '../../../../core/models/book_model/BookModel.dart';
 
 class HomeService {
   final ApiService apiService;

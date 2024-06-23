@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../utiils/failures.dart';
-import '../../../data/models/book_model/BookModel.dart';
+import '../../../../../core/models/book_model/BookModel.dart';
+import '../../../../../core/failures.dart';
 import '../../../data/services/home_service.dart';
 
 part 'similar_books_state.dart';

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_worm/features/home/data/models/book_model/BookModel.dart';
-import 'package:book_worm/utiils/failures.dart';
+import 'package:book_worm/core/failures.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../../core/models/book_model/BookModel.dart';
 import '../../../data/services/home_service.dart';
 
 part 'featured_books_state.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../app_router.dart';
-import '../../data/models/book_model/BookModel.dart';
+import '../../../../core/models/book_model/BookModel.dart';
 
 class NewestBookListviewItem extends StatelessWidget {
   const NewestBookListviewItem({super.key, required this.bookModel});

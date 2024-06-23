@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_worm/features/home/data/models/book_model/BookModel.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../utiils/failures.dart';
+import '../../../../../core/models/book_model/BookModel.dart';
+import '../../../../../core/failures.dart';
 import '../../../data/services/home_service.dart';
 
 part 'newest_books_state.dart';
